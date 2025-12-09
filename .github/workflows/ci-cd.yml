@@ -1,0 +1,22 @@
+
+name: Python CI/CD
+
+# Pushes the code to main branch will trigger the workflow
+on:
+  push:
+    branches:
+      - main
+# Jobs would run on Ubuntu latest environment
+jobs:
+  build:
+    runs-on: ubuntu-latest
+# Checking out code from the repository
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v4 # Use the latest version of checkout action
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13.9'  # Specify the Python version to use
+      - name: Run Hello Python program
+        run: python hello.py
